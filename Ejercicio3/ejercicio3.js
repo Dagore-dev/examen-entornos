@@ -1,39 +1,62 @@
-function Grupo (codigo, horario) {
-    var grupo = new Object();
-    grupo.codigo = codigo;
-    grupo.horario = horario;
-    grupo.alumnos = [];
-    
-    grupo.matricular = function matricular (dni, nombre, nota) {
-    this.alumnos.push (Crea (dni, nombre, nota));
-    }
-    
-    function Crea(dni, nombre, nota) {
-        var alum = new Object();
-        alum.dni = dni;
-        alum.nombre = nombre;
-        alum.nota = nota;
-        return alum;
-    }
-    
-    grupo.num = function Alumnos () {
-         var num = this.alumnos.length;
-         return num;
-    };
-    
-    grupo.media = function Media () {
-         var suma = 0;
-         for (let i=0; i < this.alumnos.length; i++ ){
-               suma += this.alumnos[i].nota;
-          }
-          return (suma/ this.alumnos.length);
-    };
-    
-    return grupo;
-    };
-    
-    var asir1 = Grupo("ASIR1", "tarde");
-    
-    asir1.matricular("2345", "pepe", 7.8);
-    asir1.matricular("4545", "juan", 9.8);
+function creaGrupo (codigo, horario) {
+
+     const alumnos = [];
+   
+     function matricular (dni, nombre, nota) {
+       const alumno = creaAlumno(dni, nombre, nota);
+       matriculaAlumno(alumno);
+     }
      
+     function matriculaAlumno (alumno) {
+       alumnos.push(alumno);
+     }
+   
+     function getNumeroAlumnos () {
+       return alumnos.length;
+     }
+   
+     function getMediaCalificaciones () {
+       return calculaMediaCalificaciones();
+     }
+   
+     function calculaMediaCalificaciones () {
+   
+       if (alumnos.length !== 0) {
+         const notas = alumnos.map(({ nota }) => nota);
+         const sumaNotas = notas.reduce((acumulada, actual) => acumulada + actual, 0);
+     
+         return sumaNotas / alumnos.length;
+       }
+   
+       throw new Error("No hay alumnos en el grupo");
+   
+     }
+   
+     return {
+       codigo,
+       horario,
+       alumnos,
+       matricular,
+       getNumeroAlumnos,
+       getMediaCalificaciones
+     }
+   
+   }
+   
+   function creaAlumno (dni, nombre, nota) {
+     return {
+       dni,
+       nombre,
+       nota
+     }
+   }
+   
+   const asir1 = creaGrupo("ASIR1", "tarde");
+       
+   asir1.matricular("2345", "pepe", 7.8);
+   asir1.matricular("4545", "juan", 9.8);
+   
+   console.log(asir1)
+   console.log("Número de alumnos", asir1.getNumeroAlumnos())
+   console.log("Media de las calificaciones", asir1.getMediaCalificaciones())
+   
