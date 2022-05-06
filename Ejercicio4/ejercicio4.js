@@ -1,25 +1,25 @@
-function Valida1(dni){
+function dniValido(dni){
     const res = /\d{2}\.\d{3}\.\d{3}-[A-Z]$/;
     return res.test(dni);
 }
-function Valida2(nombre){
+function nombreValido(nombre){
   const res = /^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/;
   return res.test(nombre);
 }
-function Valida3(apellido){
+function apellidoValido(apellido){
     const res = /^(?=.{3,15}$)[A-ZÁÉÍÓÚ][a-zñáéíóú]+(?: [A-ZÁÉÍÓÚ][a-zñáéíóú]+)?$/;
     return res.test(apellido);
   }
-function Valida4(email)
+function emailValido(email)
 {
     const res = /\S+@\S+\.\S+/;
     return res.test(email);
 }
-function Valida5(web){
+function webValida(web){
     const res = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/
     return res.test(web)
 }
-function Valida6(pass)
+function passValidad(pass)
 {
     if(pass.length>=8 && pass.length <=10)
     {
@@ -48,37 +48,37 @@ function Validacion(){
     const web = document.getElementById("web").value
     const pass = document.getElementById("pass").value
  
-    if(!Valida1(dni))
+    if(!dniValido(dni))
     {
         console.log("El DNI no es válido")
     }
     else
     {
-        if(!Valida2(nombre))
+        if(!nombreValido(nombre))
         {
             console.log("El nombre no es válido")
         }
         else
         {
-            if(!Valida3(apellido))
+            if(!apellidoValido(apellido))
             {
                 console.log("El apellido no es válido")
             }
             else
             {
-                if(!Valida4(email))
+                if(!emailValido(email))
                 {
                     console.log("El email no es válido")
                 }
                 else
                 {
-                    if(!Valida5(web))
+                    if(!webValida(web))
                     {
                         console.log("La dirección web no es válida")
                     }
                     else
                     {
-                        if(!Valida6(pass))
+                        if(!passValidad(pass))
                         {
                             console.log("La contraseña debe tener entre 8 y 10 caracteres")
                         }
