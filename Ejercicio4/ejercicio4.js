@@ -1,3 +1,10 @@
+const $DNI = document.getElementById("dni");
+const $NOMBRE = document.getElementById("nombre");
+const $APELLIDO = document.getElementById("apellido");
+const $EMAIL = document.getElementById("email");
+const $WEB = document.getElementById("web");
+const $PASS = document.getElementById("pass");
+
 function dniValido(dni){
     const res = /\d{2}\.\d{3}\.\d{3}-[A-Z]$/;
     return res.test(dni);
@@ -35,13 +42,13 @@ function creaRegistro(dni, nombre, apellido, email, web, pass){
     }
 }
 
-function Validacion(){
-    const dni = document.getElementById("dni").value
-    const nombre = document.getElementById("nombre").value
-    const apellido = document.getElementById("apellido").value
-    const email = document.getElementById("email").value
-    const web = document.getElementById("web").value
-    const pass = document.getElementById("pass").value
+function validacion(){
+    const dni = $DNI.value;
+    const nombre = $NOMBRE.value;
+    const apellido = $APELLIDO.value;
+    const email = $EMAIL.value;
+    const web = $WEB.value;
+    const pass = $PASS.value;
  
     if(!dniValido(dni))
     {
