@@ -24,13 +24,15 @@ function passValida(pass)
     return pass.length>=8 && pass.length <=10;
 }
  
-function creaObjeto(dni, nombre, apellido, email, web, pass){
-    this.dni = dni;
-    this.nombre = nombre;
-    this.apellido=apellido;
-    this.email = email;
-    this.web = web;
-    this.passw = pass;
+function creaRegistro(dni, nombre, apellido, email, web, pass){
+    return {
+        dni,
+        nombre,
+        apellido,
+        email,
+        web,
+        pass
+    }
 }
 
 function Validacion(){
@@ -77,7 +79,7 @@ function Validacion(){
                         }
                         else
                         {
-                            newRegistro = new creaObjeto(dni, nombre, apellido, email, web, pass);
+                            newRegistro = creaRegistro(dni, nombre, apellido, email, web, pass);
                         }
                     }
                 }
