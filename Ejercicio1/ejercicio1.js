@@ -1,7 +1,11 @@
+const $SUELDO = document.getElementById('sueldo');
+const $ANTIGUEDAD = document.getElementById('antiguedad');
+const $RESULTADO = document.getElementById('resultado');
+
 function calcular() {
 
-    var sueldo = parseInt(document.getElementById('sueldo').value);
-    var antiguedad = parseInt(document.getElementById('antiguedad').value);
+    const sueldo = parseInt($SUELDO.value);
+    const antiguedad = parseInt($ANTIGUEDAD.value);
     let aumento = sueldo;
 
     if (sueldo < 1000) {
@@ -35,5 +39,5 @@ function calcular() {
 }
 
 function imprimeResultado ( aumento ) {
-    resultado.innerHTML = "El sueldo es " + aumento + "€";
+    $RESULTADO.innerHTML = "El sueldo es " + aumento + "€";
 }
