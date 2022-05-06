@@ -1,21 +1,26 @@
-function ordenar(){
-    var array = [];
-    array = document.getElementById("cadena").value.split(" ");
+const $CADENA = document.getElementById("cadena");
+
+function ordenarCadenaDescendente(){
+    const cadena = $CADENA.value;
+    const cadenas = cadena.split(" ");
         
-    while(array.length>=1){
-        mayor(array);
+    cadenas.sort(comparadorCadenas);
+
+    imprimeCadenas(cadenas);
+}
+
+function comparadorCadenas (a, b) { 
+    if (a.length === b.length) {
+        return 0;
+    }
+    else {
+        if (a.length < b.length) {
+            return 1;
+        }
+        return -1;
     }
 }
 
-function mayor(array){
-    var mayor = array[0].length;
-    var indice;
-    for(var i=0;i<array.length;i++){
-        if(array[i].length>=mayor){
-            mayor=array[i].length;
-            indice = i;
-        }
-    }
-    console.log(array[indice])
-    array.splice(indice,1);
+function imprimeCadenas ( cadenas ) {
+    cadenas.forEach(cadena => console.log(cadena));
 }
