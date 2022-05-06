@@ -2,37 +2,38 @@ function calcular() {
 
     var sueldo = parseInt(document.getElementById('sueldo').value);
     var antiguedad = parseInt(document.getElementById('antiguedad').value);
+    let aumento = sueldo;
 
     if (sueldo < 1000) {
         if (antiguedad > 10) {
-            let aumento = sueldo * 1.20;
-            resultado.innerHTML = "El sueldo es " + aumento + "€";
+            aumento *= 1.20;
         }
         else {
             if (antiguedad > 5) {
-                let aumento = sueldo * 1.15;
-                resultado.innerHTML = "El sueldo es " + aumento + "€";
+                aumento *= 1.15;
             }
             else {
-                let aumento = sueldo * 1.10;
-                resultado.innerHTML = "El sueldo es " + aumento + "€";
+                aumento *= 1.10;
             }
         }
     }
     else {
         if (antiguedad > 10) {
-            let aumento = sueldo * 1.10;
-            resultado.innerHTML = "El sueldo es " + aumento + "€";
+            aumento *= 1.10;
         }
         else {
             if (antiguedad > 5) {
-                let aumento = sueldo * 1.05;
-                resultado.innerHTML = "El sueldo es " + aumento + "€";
+                aumento *= 1.05;
             }
             else {
-                let aumento = sueldo * 1.01;
-                resultado.innerHTML = "El sueldo es " + aumento + "€";
+                aumento *= 1.01;
             }
         }
     }
+
+    imprimeResultado(aumento);
+}
+
+function imprimeResultado ( aumento ) {
+    resultado.innerHTML = "El sueldo es " + aumento + "€";
 }
