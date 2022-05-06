@@ -43,6 +43,8 @@ function creaRegistro(dni, nombre, apellido, email, web, pass){
 }
 
 function validacion(){
+    let nuevoRegistro;
+
     const dni = $DNI.value;
     const nombre = $NOMBRE.value;
     const apellido = $APELLIDO.value;
@@ -50,47 +52,20 @@ function validacion(){
     const web = $WEB.value;
     const pass = $PASS.value;
  
-    if(!dniValido(dni))
-    {
-        console.log("El DNI no es válido")
+    const validaciones = [
+        [dniValido(dni), "El DNI no es válido"],
+        [nombreValido(nombre), "El nombre no es válido"],
+        [apellidoValido(apellido), "El apellido no es válido"],
+        [emailValido(email), "El email no es válido"],
+        [webValida(web), "La dirección web no es válida"],
+        [passValida(pass), "La contraseña debe tener entre 8 y 10 caracteres"]
+    ];
+    
+    if (validaciones.every(([validacion]) => validacion)) {
+        nuevoRegistro = creaRegistro(dni, nombre, apellido, email, web, pass);
     }
-    else
-    {
-        if(!nombreValido(nombre))
-        {
-            console.log("El nombre no es válido")
-        }
-        else
-        {
-            if(!apellidoValido(apellido))
-            {
-                console.log("El apellido no es válido")
-            }
-            else
-            {
-                if(!emailValido(email))
-                {
-                    console.log("El email no es válido")
-                }
-                else
-                {
-                    if(!webValida(web))
-                    {
-                        console.log("La dirección web no es válida")
-                    }
-                    else
-                    {
-                        if(!passValida(pass))
-                        {
-                            console.log("La contraseña debe tener entre 8 y 10 caracteres")
-                        }
-                        else
-                        {
-                            newRegistro = creaRegistro(dni, nombre, apellido, email, web, pass);
-                        }
-                    }
-                }
-            }
-        }
+    else {
+        const validacionFallida = validaciones.find(([validacion]) => !validacion);
+        console.log(validacionFallida[1]);
     }
 }
