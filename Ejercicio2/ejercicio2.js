@@ -1,13 +1,13 @@
-function Ordenar(){
+function ordenar(){
     var array = [];
     array = document.getElementById("cadena").value.split(" ");
         
     while(array.length>=1){
-        Mayor(array);
+        mayor(array);
     }
 }
 
-function Mayor(array){
+function mayor(array){
     var mayor = array[0].length;
     var indice;
     for(var i=0;i<array.length;i++){
