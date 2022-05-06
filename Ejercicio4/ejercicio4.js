@@ -16,19 +16,12 @@ function emailValido(email)
     return res.test(email);
 }
 function webValida(web){
-    const res = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/
+    const res = /^https?:\/\/[\w\-]+(\.[\w\-]+)+[/#?]?.*$/;
     return res.test(web)
 }
-function passValidad(pass)
+function passValida(pass)
 {
-    if(pass.length>=8 && pass.length <=10)
-    {
-        return true;
-    }
-    else
-    {
-        return false;
-    }
+    return pass.length>=8 && pass.length <=10;
 }
  
 function creaObjeto(dni, nombre, apellido, email, web, pass){
@@ -78,7 +71,7 @@ function Validacion(){
                     }
                     else
                     {
-                        if(!passValidad(pass))
+                        if(!passValida(pass))
                         {
                             console.log("La contraseña debe tener entre 8 y 10 caracteres")
                         }
