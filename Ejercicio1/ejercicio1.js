@@ -1,4 +1,4 @@
-function Calcular() {
+function calcular() {
 
     var sueldo = parseInt(document.getElementById('sueldo').value);
     var antiguedad = parseInt(document.getElementById('antiguedad').value);
